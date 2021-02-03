@@ -103,7 +103,11 @@ if [[ ! -d $lc_base_folder ]]; then
 fi
 
 cd $lc_dl_dir
-git clone -b master http://github.com/nexusofdoom/lancache-installer
+#git clone -b master http://github.com/nexusofdoom/lancache-installer
+
+##regiotec
+git clone -b master http://github.com/regiotec/lancache-installer
+
 echo "Configuring IP Addressing..."
 for service in ${lc_services[@]}; do
 	# Check if the folder exists if not creates it
@@ -275,12 +279,28 @@ cp $lc_base_folder/etc/netplan/01-netcfg.yaml /etc/netplan/01-netcfg.yaml
 mv /etc/hosts /etc/hosts.$TIMESTAMP.bak
 cp $lc_base_folder/etc/hosts /etc/hosts
 
+##regiotec
+apt install nload -y
+apt install iftop -y
+
 echo "##############################################################################################"
 echo "Current interface name: $if_name"
 echo "##############################################################################################"
 echo ""
 #ip link | awk -F: '$0 !~ "lo|vir|wl|^[^0-9]"{print $2;getline}'
 #if_name=$(ifconfig | grep flags | awk -F: '{print $1;}' | grep -Fvx -e lo)
+
+## regiotec
+echo "##############################################################################################"
+echo "Traffic Monitoring on CLI $if_name"
+echo "##############################################################################################"
+echo "# nload -U G -u M -i 102400 -o 102400 (shows bandwith in MByte/s)"
+echo "# or"
+echo "# nload -U G -u m -i 1024000 -o 1024000 (shows bandwith in Mbit/s, scales graph to 1 Gbit/s)"
+echo "# or"
+##echo "# iftop -i eth0"
+echo "# iftop -i $if_name"
+echo ""
 
 ### To Do Still
 ### Systemd Scripts for everything
