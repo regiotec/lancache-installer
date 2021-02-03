@@ -13,7 +13,8 @@ lc_dns1="8.8.8.8"
 # Secondary DNS Server
 lc_dns2="1.1.1.1"
 # Proxy cache size, measued in Megabytes (MB). Default is 500GB
-lc_max_size="500000m"
+#lc_max_size="500000m"
+lc_max_size="50000m"
 
 # Variables you should most likely not touch
 # Unless you know what you are doing
