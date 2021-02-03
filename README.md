@@ -12,7 +12,7 @@ Improve download speeds and reduce strain on your Internet connection at LAN par
  
 # Clone the git repo
  
- `git clone -b master http://github.com/nexusofdoom/lancache-installer`
+ `git clone -b master http://github.com/regiotec/lancache-installer`
  
  `cd lancache-installer`
  
